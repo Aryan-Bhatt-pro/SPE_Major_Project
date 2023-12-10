@@ -21,13 +21,13 @@ public class NoteService {
         return repo.findAll();
     }
 
-    public String delNote(int id){
-        repo.deleteById(id);
+    public String delNote(String id){
+        repo.deleteByIdCustom(id);
         return "Note Deleted";
     }
 
-    public Note updateNote(Note note){
-        Note existing_note = repo.findById(note.getId()).orElse(null);
+    public Note updateNote(Note note, String id){
+        Note existing_note = repo.findByIdCustom(id);
 
         existing_note.setTitle(note.getTitle());
         existing_note.setContent(note.getContent());

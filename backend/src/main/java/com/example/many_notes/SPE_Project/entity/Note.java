@@ -15,9 +15,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "Note_Table")
 public class Note {
 
+
+//    @GeneratedValue
     @Id
-    @GeneratedValue
-    private int id;
+    private String id;
 
     private String title;
     private String content;
