@@ -35,6 +35,7 @@ const getAllNotes = (mainNotes, filter, searchInput) => {
 
   //normal notes
   if (normal.length !== 0 && pinned.length === 0) {
+    // var AllNotes = 
     return (
       <>
         <div className="allNotes__notes-type">

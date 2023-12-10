@@ -74,35 +74,55 @@ const CreateNoteModal = () => {
     }
 
     const date = dayjs().format("DD/MM/YY h:mm A");
-
+    let new_value = value.slice(3, value.length - 4);
+    console.log(editNote)
     let note = {
       title: noteTitle,
-      content: value,
+      content: new_value,
       // tags: addedTags,
       color: noteColor,
       priority: priority,
       // editedTime: new Date().getTime(),
     };
-
-      try {
-        const response = await axios.post('http://localhost:8085/api/addnote', JSON.stringify(note));
-        console.log(response.data);
-      } catch (error) {
-        console.error('Error making POST req', error);
-      }
+      
+    
+      
 
     if (editNote) {
       note = { ...editNote, ...note };
+      // const customConfig = {
+      //   headers: {
+      //   'Content-Type': 'application/json'
+      //   }
+      // }
+      // const response = await axios.put('http://127.0.0.1:8085/api/updatenote', note);
+      // console.log('Update: ' + response.data);
+
     } else {
+      let demo_note = {
+        ...note, 
+        id: v4()
+      }
       note = {
-        ...note,
+        ...demo_note,
         date,
         createdTime: new Date().getTime(),
         editedTime: null,
         isPinned: false,
         isRead: false,
-        id: v4(),
+        
       };
+      try {
+        const customConfig = {
+          headers: {
+          'Content-Type': 'application/json'
+          }
+        }
+        const response = await axios.post('http://127.0.0.1:8085/api/addnote', demo_note, customConfig);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error making POST req', error);
+      }
     }
 
     dispatch(setMainNotes(note));
