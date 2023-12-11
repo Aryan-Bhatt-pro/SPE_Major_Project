@@ -14,26 +14,26 @@ pipeline{
 
     stages{
 
-        stage('Stage 0: Pull MySQL Docker Image') {
-            steps {
-                echo 'Pulling MySQL Docker image from DockerHub'
-                script {
-                    docker.withRegistry('', 'docker') {
-                        docker.image("${mysqlImage}").pull()
-                    }
-                }
-            }
-        }
+        // stage('Stage 0: Pull MySQL Docker Image') {
+        //     steps {
+        //         echo 'Pulling MySQL Docker image from DockerHub'
+        //         script {
+        //             docker.withRegistry('', 'docker') {
+        //                 docker.image("${mysqlImage}").pull()
+        //             }
+        //         }
+        //     }
+        // }
 
-        stage('Stage 0.1: Run MySQL Container') {
-            steps {
-                script {
-                    sh  'docker container stop mysqldb'
-                    sh  'docker container rm mysqldb'
-                    sh  'docker run --name mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d -v "/var/lib/mysql" --network=${NETWORK} mysql:latest'
-                }
-            }
-        }
+        // stage('Stage 0.1: Run MySQL Container') {
+        //     steps {
+        //         script {
+        //             sh  'docker container stop mysqldb'
+        //             sh  'docker container rm mysqldb'
+        //             sh  'docker run --name mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d -v "/var/lib/mysql" --network=${NETWORK} mysql:latest'
+        //         }
+        //     }
+        // }
 
         stage('1. Git Clone'){
             steps{
