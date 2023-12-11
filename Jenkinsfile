@@ -18,7 +18,7 @@ pipeline{
             steps {
                 echo 'Pulling MySQL Docker image from DockerHub'
                 script {
-                    docker.withRegistry('', 'DockerCred') {
+                    docker.withRegistry('', 'docker') {
                         docker.image("${mysqlImage}").pull()
                     }
                 }
@@ -74,7 +74,7 @@ pipeline{
             steps {
                 echo 'Pushing backend Docker image to DockerHub'
                 script {
-                    docker.withRegistry('', 'DockerCred') {
+                    docker.withRegistry('', 'docker') {
                         sh 'docker push aryanbhatt1812/${backend}'
                     }
                 }
@@ -85,7 +85,7 @@ pipeline{
             steps {
                 echo 'Pushing frontend Docker image to DockerHub'
                 script {
-                    docker.withRegistry('', 'DockerCred') {
+                    docker.withRegistry('', 'docker') {
                         sh 'docker push aryanbhatt1812/${frontend}'
                     }
                 }
