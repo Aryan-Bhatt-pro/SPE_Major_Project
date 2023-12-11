@@ -7,7 +7,7 @@ pipeline{
         MYSQL_ROOT_PASSWORD = 'mysql@123'
         MYSQL_PORT = '3306'
         docker_image = ''
-        // NETWORK = 'deployment_my-network'
+        NETWORK = 'deployment_my-network'
     }
 
     agent any
@@ -30,7 +30,7 @@ pipeline{
                 script {
                     sh  'docker container stop mysqldb'
                     sh  'docker container rm mysqldb'
-                    sh  'docker run --name mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d mysql:latest'
+                    sh  'docker run --name mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d -v "/var/lib/mysql" --network=${NETWORK} mysql:latest'
                 }
             }
         }
