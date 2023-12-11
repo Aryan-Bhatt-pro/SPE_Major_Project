@@ -16,7 +16,7 @@ pipeline{
         stage('1. Git Clone'){
             steps{
                 echo 'Cloning the git repo'
-                git branch: 'master' url: 'https://github.com/Aryan-Bhatt-pro/SPE_Major_Project.git'
+                git branch: 'master', url: 'https://github.com/Aryan-Bhatt-pro/SPE_Major_Project.git'
             }
         }
 
