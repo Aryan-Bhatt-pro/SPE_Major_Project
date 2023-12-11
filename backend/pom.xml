@@ -58,6 +58,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>Many_Notes_App</finalName>
 	</build>
 
 </project>
