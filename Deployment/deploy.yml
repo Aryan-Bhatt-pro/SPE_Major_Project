@@ -1,7 +1,7 @@
 ---
 - name: Deploy docker images
   # hosts: Paji
-  hosts: localhost
+  hosts: all
 
   tasks:
     - name: Copy Docker Compose file from host machine to remote host
