@@ -23,7 +23,9 @@ pipeline{
         stage('2. Build Spring Boot App'){
             steps {
                 echo 'Building Spring Boot backend'
-                sh 'mvn clean install'
+                dir('backend'){
+                    sh 'mvn clean install'
+                }
             }
         }
 
