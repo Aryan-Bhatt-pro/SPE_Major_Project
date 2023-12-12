@@ -103,9 +103,17 @@ pipeline{
 
         stage('8. Ansible Deployment'){
             steps{
-                dir('Deployment'){
-                    sh 'ansible-playbook -i inventory deploy.yml'
-                }
+                // dir('Deployment'){
+                //     sh 'ansible-playbook -i inventory deploy.yml'
+                // }
+                ansiblePlaybook becomeUser: null,
+                colorized: true,
+                credentialsId: 'localhost',
+                disableHostKeyChecking: true,
+                installation: 'Ansible',
+                inventory: 'Deployment/inventory',
+                playbook: 'Deployment/deploy.yml',
+                sudoUser: null
             }
         }
     }
