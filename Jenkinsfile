@@ -53,6 +53,8 @@ pipeline{
 
         stage('3. Build backend Docker Image'){
             steps {
+                sh  'docker container stop mysql-container'
+                sh  'docker container rm mysql-container'
                 echo 'Building backend Docker image'
                 dir('backend'){
                     sh "docker build -t aryanbhatt1812/${backend} ."
