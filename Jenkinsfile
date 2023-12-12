@@ -3,7 +3,7 @@ pipeline{
         backend = 'backend' // Specify your backend Docker image name/tag
         frontend = 'frontend' // Specify your frontend Docker image name/tag
         mysqlImage = 'mysql:latest'
-        mysqlContainerName = 'mysqldb'
+        mysqlContainerName = 'mysql-container'
         MYSQL_ROOT_PASSWORD = 'mysql@123'
         MYSQL_PORT = '3306'
         docker_image = ''
