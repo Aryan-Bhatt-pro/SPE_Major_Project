@@ -34,7 +34,7 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: mysql@123
     volumes:
-      - /logs:/logs
+      - /home/aryanbhatt1812/Semester\ 7/SPE/Major\ Project/Many_Notes_Spe_project/SPE_Major_Project/logs:/logs
     networks:
       - my-network
 

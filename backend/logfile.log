@@ -26,3 +26,6 @@
 2023-12-13T18:56:34.584+05:30  INFO 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : Spring Application Running
 2023-12-13T18:56:34.584+05:30  WARN 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : This is a warning message
 2023-12-13T18:56:34.584+05:30 ERROR 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : This is an error message
+2023-12-13T19:11:12.059+05:30  INFO 26630 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-12-13T19:11:12.060+05:30  INFO 26630 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-12-13T19:11:12.064+05:30  INFO 26630 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
