@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import notes from "../../notesData";
+import axios from "axios";
 
 const initialState = {
   mainNotes: [...notes],
@@ -34,6 +35,14 @@ const notesListSlice = createSlice({
         ({ id }) => id !== payload.id
       );
       state.trashNotes.push({ ...payload, isPinned: false });
+
+      // delete in db also
+      // try{
+      //   const response = axios.delete('http://localhost:8085/api/deletenote/' + payload.id);
+      // }catch(err){
+      //   console.error('Error deleting note:', err.message);
+      // }
+
     },
 
     unarchiveNote: (state, { payload }) => {
