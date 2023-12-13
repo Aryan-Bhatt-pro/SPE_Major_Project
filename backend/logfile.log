@@ -1,0 +1,28 @@
+2023-12-13T18:56:32.445+05:30  INFO 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : Starting SpeProjectApplication using Java 21.0.1 with PID 26630 (/home/aryanbhatt1812/Semester 7/SPE/Major Project/Many_Notes_Spe_project/SPE_Major_Project/backend/target/classes started by aryanbhatt1812 in /home/aryanbhatt1812/Semester 7/SPE/Major Project/Many_Notes_Spe_project/SPE_Major_Project/backend)
+2023-12-13T18:56:32.446+05:30 DEBUG 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : Running with Spring Boot v3.2.0, Spring v6.1.1
+2023-12-13T18:56:32.447+05:30  INFO 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-12-13T18:56:32.842+05:30  INFO 26630 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-12-13T18:56:32.878+05:30  INFO 26630 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 1 JPA repository interface.
+2023-12-13T18:56:33.205+05:30  INFO 26630 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
+2023-12-13T18:56:33.213+05:30  INFO 26630 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-12-13T18:56:33.213+05:30  INFO 26630 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2023-12-13T18:56:33.248+05:30  INFO 26630 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-12-13T18:56:33.248+05:30  INFO 26630 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 771 ms
+2023-12-13T18:56:33.339+05:30  INFO 26630 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-12-13T18:56:33.367+05:30  INFO 26630 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2023-12-13T18:56:33.396+05:30  INFO 26630 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2023-12-13T18:56:33.531+05:30  INFO 26630 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-12-13T18:56:33.552+05:30  INFO 26630 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-12-13T18:56:33.651+05:30  INFO 26630 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@935d3f9
+2023-12-13T18:56:33.653+05:30  INFO 26630 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-12-13T18:56:33.676+05:30  WARN 26630 --- [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL57Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2023-12-13T18:56:33.677+05:30  WARN 26630 --- [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL57Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-12-13T18:56:34.090+05:30  INFO 26630 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2023-12-13T18:56:34.181+05:30  INFO 26630 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-12-13T18:56:34.361+05:30  WARN 26630 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-12-13T18:56:34.575+05:30  INFO 26630 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path ''
+2023-12-13T18:56:34.581+05:30  INFO 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : Started SpeProjectApplication in 2.438 seconds (process running for 2.699)
+2023-12-13T18:56:34.583+05:30 DEBUG 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : This is a debug message
+2023-12-13T18:56:34.584+05:30  INFO 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : Spring Application Running
+2023-12-13T18:56:34.584+05:30  WARN 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : This is a warning message
+2023-12-13T18:56:34.584+05:30 ERROR 26630 --- [main] c.e.m.SPE_Project.SpeProjectApplication  : This is an error message
