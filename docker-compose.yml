@@ -14,7 +14,7 @@ services:
       - my-network
   
   frontend:
-    image: aryanbhatt1812/frontend:latest
+    image: raddi1972/frontend:latest
     container_name: frontend
     ports:
       - "3000:3000"
@@ -23,7 +23,7 @@ services:
   
   
   backend:
-    image: "aryanbhatt1812/backend:latest"
+    image: "raddi1972/backend:latest"
     ports:
       - "8085:8085"
     depends_on:
