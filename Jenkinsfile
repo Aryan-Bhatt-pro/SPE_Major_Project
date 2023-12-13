@@ -38,7 +38,7 @@ pipeline{
         stage('1. Git Clone'){
             steps{
                 echo 'Cloning the git repo'
-                git branch: 'master', url: 'https://github.com/Aryan-Bhatt-pro/SPE_Major_Project.git'
+                git branch: 'main', url: 'https://github.com/Aryan-Bhatt-pro/SPE_Major_Project.git'
             }
         }
 
@@ -50,7 +50,15 @@ pipeline{
                 }
             }
         }
-
+        
+        stage('2.5. Running tests') {
+            steps{
+                echo 'Running tests individually'
+                dir('backend') {
+                    sh 'mvn -Dtest=NoteRepoTest test'
+                }
+            }
+        }
 
         stage('3. Build backend Docker Image'){
             steps {
