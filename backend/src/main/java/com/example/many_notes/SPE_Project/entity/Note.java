@@ -18,8 +18,7 @@ public class Note {
 
 //    @GeneratedValue
     @Id
-    private String id;
-
+    private long id;
     private String title;
     private String content;
     private String color;

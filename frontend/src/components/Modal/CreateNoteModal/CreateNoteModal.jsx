@@ -63,6 +63,10 @@ const CreateNoteModal = () => {
     }
   };
 
+  function generateUniqueId() {
+    return Math.floor(Date.now() * Math.random());
+  }
+
   // create note
   const createNoteHandler = async (e) => {
     if (!noteTitle) {
@@ -114,8 +118,8 @@ const CreateNoteModal = () => {
       // }
 
       try {
-        const response = await axios.post(
-          "http://localhost:8085/api/addnote",
+        const response = await axios.put(
+          "http://localhost:8085/api/updatenote/" + note.id,
           note,
           {
             headers: {
@@ -126,7 +130,7 @@ const CreateNoteModal = () => {
         );
         console.log(response.data);
       } catch (error) {
-        console.error("Error making POST req", error);
+        console.error("Error making PUT req", error);
       }
 
 
@@ -136,7 +140,7 @@ const CreateNoteModal = () => {
       try {
         note = {
           ...note,
-          id: v4(),
+          id: generateUniqueId(),
         }
         const response = await axios.post(
           "http://localhost:8085/api/addnote",
@@ -153,7 +157,7 @@ const CreateNoteModal = () => {
         console.error("Error making POST req", error);
       }
       note = {
-        ...demo_note,
+        ...note,
         date,
         createdTime: new Date().getTime(),
         editedTime: null,

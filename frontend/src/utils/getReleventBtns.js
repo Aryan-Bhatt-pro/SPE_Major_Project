@@ -62,12 +62,12 @@ const getReleventBtns = (type, note, dispatch) => {
         <NotesIconBox data-info="Edit">
           <FaEdit style={{ fontSize: "1.5rem" }} onClick={clickHandler} />
         </NotesIconBox>
-        <NotesIconBox
+        {/* <NotesIconBox
           onClick={() => dispatch(setArchiveNotes(note))}
           data-info="Archive"
         >
           <FaArchive />
-        </NotesIconBox>
+        </NotesIconBox> */}
         <NotesIconBox
           onClick={async () => 
             {try{

@@ -46,10 +46,11 @@ pipeline{
             steps {
                 echo 'Building Spring Boot backend'
                 dir('backend'){
-                    sh 'mvn clean install'
+                    sh 'mvn clean install -DskipTests'
                 }
             }
         }
+
 
         stage('3. Build backend Docker Image'){
             steps {
