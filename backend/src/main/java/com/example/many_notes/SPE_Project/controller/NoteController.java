@@ -13,12 +13,14 @@ public class NoteController {
     @Autowired
     private NoteService service;
 
+    @CrossOrigin
     @PostMapping("/api/addnote")
     @CrossOrigin
     public Note addNote(@RequestBody Note new_note){
         return service.saveNote(new_note);
     }
 
+    @CrossOrigin
     @GetMapping("/api/getnotes")
     @CrossOrigin
     public List<Note> getNotes(){
@@ -31,6 +33,7 @@ public class NoteController {
         return service.updateNote(note, id);
     }
 
+    @CrossOrigin
     @DeleteMapping("/api/deletenote/{id}")
     @CrossOrigin
     public String deleteNote(@PathVariable String id){

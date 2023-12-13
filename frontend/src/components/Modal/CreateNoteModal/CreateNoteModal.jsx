@@ -153,7 +153,7 @@ const CreateNoteModal = () => {
         console.error("Error making POST req", error);
       }
       note = {
-        ...note,
+        ...demo_note,
         date,
         createdTime: new Date().getTime(),
         editedTime: null,
