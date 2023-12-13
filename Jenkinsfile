@@ -28,8 +28,8 @@ pipeline{
         stage('Stage 0.1: Run MySQL Container') {
             steps {
                 script {
-                    sh  'docker container stop mysql-container'
-                    sh  'docker container rm mysql-container'
+                    // sh  'docker container stop mysql-container'
+                    // sh  'docker container rm mysql-container'
                     sh  'docker run --name mysql-container -p 3306:3306 -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d -v "/var/lib/mysql" --network=${NETWORK} mysql:latest'
                 }
             }
