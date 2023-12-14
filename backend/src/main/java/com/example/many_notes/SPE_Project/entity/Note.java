@@ -23,4 +23,5 @@ public class Note {
     private String content;
     private String color;
     private String priority;
+    private boolean isPinned;
 }

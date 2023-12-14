@@ -45,6 +45,7 @@ public class NoteService {
                             note.getContent(),
                             note.getColor(),
                             note.getPriority()
+
                     )
             );
         }
@@ -73,6 +74,7 @@ public class NoteService {
         existing_note.setContent(note.getContent());
         existing_note.setColor(note.getColor());
         existing_note.setPriority(note.getPriority());
+        existing_note.setPinned(note.isPinned());
 
         logger.debug(String.format(
                         "Updated to Note: id: %d, title: %s, content: %s, color: %s, priority: %s\n",

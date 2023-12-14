@@ -45,8 +45,8 @@ const Sidebar = () => {
     <Container openMenu={isOpen && "open"}>
       <MainBox openMenu={isOpen && "open"} ref={nodeRef}>
         <StyledLogo>
-          <img src={images.whiteLogo} alt="" />
-          <span>Notes</span>
+          {/* <img src={images.whiteLogo} alt="" /> */}
+          <span>Many Notes</span>
         </StyledLogo>
 
         <ItemsBox>
@@ -68,7 +68,7 @@ const Sidebar = () => {
 
           {/*tags item */}
 
-          {tagsList?.map(({ tag, id }) => (
+          {/* {tagsList?.map(({ tag, id }) => (
             <li key={id} onClick={() => dispatch(toggleMenu(false))}>
               <NavLink
                 to={`/tag/${tag}`}
@@ -83,11 +83,11 @@ const Sidebar = () => {
                 <span>{getStandardName(tag)}</span>
               </NavLink>
             </li>
-          ))}
+          ))} */}
 
           {/* edit tag item */}
 
-          <li
+          {/* <li
             className="sidebar__edit-item"
             onClick={() =>
               dispatch(toggleTagsModal({ type: "edit", view: true }))
@@ -97,10 +97,10 @@ const Sidebar = () => {
               <MdEdit />
             </span>
             <span>Edit Notes</span>
-          </li>
+          </li> */}
 
           {/* other items */}
-          {items.map(({ icon, title, id }) => (
+          {/* {items.map(({ icon, title, id }) => (
             <li key={id} onClick={() => dispatch(toggleMenu(false))}>
               <NavLink
                 to={`/${title.toLowerCase()}`}
@@ -113,7 +113,7 @@ const Sidebar = () => {
                 <span>{title}</span>
               </NavLink>
             </li>
-          ))}
+          ))} */}
         </ItemsBox>
       </MainBox>
     </Container>

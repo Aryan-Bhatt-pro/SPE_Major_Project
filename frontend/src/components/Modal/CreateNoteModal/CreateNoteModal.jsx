@@ -31,6 +31,7 @@ import {
 //components
 import TextEditor from "../../TextEditor/TextEditor";
 import TagsModal from "../TagsModal/TagsModal";
+import { BsCartCheck } from "react-icons/bs";
 
 const CreateNoteModal = () => {
   const dispatch = useDispatch();
@@ -72,7 +73,7 @@ const CreateNoteModal = () => {
     if (!noteTitle) {
       toast.error("You must add title");
       return;
-    } else if (value === "<p><br></p>") {
+    } else if (value === "<br>") {
       toast.error("You must write note");
       return;
     }
@@ -90,6 +91,7 @@ const CreateNoteModal = () => {
     };
 
     
+    // let notes_list = [];
 
     if (editNote) {
       note = { ...editNote, ...note };
@@ -141,6 +143,7 @@ const CreateNoteModal = () => {
         note = {
           ...note,
           id: generateUniqueId(),
+          isPinned: false
         }
         const response = await axios.post(
           "http://localhost:8085/api/addnote",
@@ -152,6 +155,7 @@ const CreateNoteModal = () => {
             },
           }
         );
+        // notes_list = await axios.get("http://localhost:8085/api/getnotes").data;
         console.log(response.data);
       } catch (error) {
         console.error("Error making POST req", error);
@@ -166,8 +170,16 @@ const CreateNoteModal = () => {
       };
       console.log("ID" + note.id);
     }
-
-    dispatch(setMainNotes(note));
+    let notes_list = []
+    try{
+      const resp = await axios.get("http://localhost:8085/api/getnotes");
+      notes_list = resp.data;
+      console.log('hello' + JSON.stringify(notes_list));
+      dispatch(setMainNotes(notes_list));
+    }catch (error) {
+      console.error("Error making GET req", error);
+    }
+    
     dispatch(toggleCreateNoteModal(false));
     dispatch(setEditNote(null));
   };

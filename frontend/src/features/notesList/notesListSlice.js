@@ -14,14 +14,27 @@ const notesListSlice = createSlice({
   name: "notesList",
   initialState,
   reducers: {
-    setMainNotes: (state, { payload }) => {
-      if (state.mainNotes.find(({ id }) => id === payload.id)) {
-        state.mainNotes = state.mainNotes.map((note) =>
-          note.id === payload.id ? payload : note
-        );
-      } else {
-        state.mainNotes.push(payload);
+    setMainNotes:  (state, { payload }) => {
+      // if (state.mainNotes.find(({ id }) => id === payload.id)) {
+      //   state.mainNotes = state.mainNotes.map((note) =>
+      //     note.id === payload.id ? payload : note
+      //   );
+      // } else {
+      //   state.mainNotes.push(payload);
+      // }
+      
+      for(let i = 0; i < payload.length; i++){
+        console.log(JSON.stringify(payload[i]));
+        if (state.mainNotes.find(({ id }) => id === payload[i].id)) {
+            state.mainNotes = state.mainNotes.map((note) =>
+              note.id === payload[i].id ? payload[i] : note
+            );
+          } 
+          else
+            state.mainNotes.push(payload[i]);
+          
       }
+      console.log('MainNotes: ' + JSON.stringify(state.mainNotes));
     },
 
     setArchiveNotes: (state, { payload }) => {

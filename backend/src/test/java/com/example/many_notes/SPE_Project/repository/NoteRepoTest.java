@@ -27,7 +27,7 @@ class NoteRepoTest {
                 "Gay",
                 "Tera baap Gay",
                 "Blue",
-                "High"
+                "High",false
         );
         noteRepo.save(note);
     }

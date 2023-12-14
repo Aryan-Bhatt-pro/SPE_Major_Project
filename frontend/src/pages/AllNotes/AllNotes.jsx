@@ -87,12 +87,12 @@ const AllNotes = () => {
               />
             </InputBox>
             <div className="notes__filter-btn">
-              <ButtonOutline
+              {/* <ButtonOutline
                 onClick={() => dispatch(toggleFiltersModal(true))}
                 className="nav__btn"
               >
                 <FaSortAmountDown /> <span>Filters</span>
-              </ButtonOutline>
+              </ButtonOutline> */}
             </div>
           </TopBox>
 
