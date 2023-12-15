@@ -24,8 +24,8 @@ class NoteRepoTest {
     void setUp() {
         Note note = new Note(
                 1,
-                "Gay",
-                "Tera baap Gay",
+                "Rudransh's Notes",
+                "This is the content of notes",
                 "Blue",
                 "High",false
         );
