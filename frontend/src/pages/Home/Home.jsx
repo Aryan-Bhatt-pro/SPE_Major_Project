@@ -12,8 +12,8 @@ const Home = () => {
     <Container>
       <div className="home__header">
         <div className="home__logo">
-          <img src={images.colorLogo} alt="" />
-          <span>Glimpse Notes</span>
+          {/* <img src={images.colorLogo} alt="" /> */}
+          <span>Many Notes</span>
         </div>
       </div>
       <Box>
@@ -22,7 +22,7 @@ const Home = () => {
             One Stop Solution for all your Notes
           </div>
           <p className="home__sub-heading">
-            Glimpse Notes helps you to create, organise and save your notes
+            Many Notes helps you to create, organise and save your notes
             effortlessly across all platforms.
           </p>
           <ButtonFill

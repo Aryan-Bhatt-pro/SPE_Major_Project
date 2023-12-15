@@ -5,34 +5,47 @@ import com.example.many_notes.SPE_Project.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 @RestController
 public class NoteController {
+
+    private static final Logger logger = LogManager.getLogger(NoteController.class);
+
     @Autowired
     private NoteService service;
 
-    @CrossOrigin
     @PostMapping("/api/addnote")
+    @CrossOrigin
     public Note addNote(@RequestBody Note new_note){
+        logger.debug("Adding Note ... ");
         return service.saveNote(new_note);
     }
 
-    @CrossOrigin
     @GetMapping("/api/getnotes")
+    @CrossOrigin
     public List<Note> getNotes(){
+        logger.debug("Getting Note ... ");
         return service.getNotes();
     }
 
+    @PutMapping("/api/updatenote/{id}")
     @CrossOrigin
-    @PutMapping("/api/updatenote")
-    public Note updateNote(@RequestBody Note note){
-        return service.updateNote(note);
+    public Note updateNote(@RequestBody Note note, @PathVariable Long id){
+        logger.debug("Updating Node ... ");
+        return service.updateNote(note, id);
     }
 
-    @CrossOrigin
     @DeleteMapping("/api/deletenote/{id}")
-    public String deleteNote(@PathVariable int id){
+    @CrossOrigin
+    public String deleteNote(@PathVariable Long id){
+        logger.debug("Deleted Note ... ");
         return service.delNote(id);
     }
 }

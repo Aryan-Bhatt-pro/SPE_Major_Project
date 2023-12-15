@@ -1,9 +1,11 @@
 package com.example.many_notes.SPE_Project.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -13,15 +15,12 @@ import lombok.NoArgsConstructor;
 @Table(name = "Note_Table")
 public class Note {
 
+//    @GeneratedValue
     @Id
-    @GeneratedValue
-    private int id;
-    @Getter
-    @ManyToOne
-    private User user;
-
+    private long id;
     private String title;
     private String content;
     private String color;
     private String priority;
+    private boolean isPinned;
 }

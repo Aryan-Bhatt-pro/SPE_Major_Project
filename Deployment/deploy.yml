@@ -1,0 +1,21 @@
+---
+- name: Deploy docker images
+  # hosts: Paji
+  hosts: all
+
+  tasks:
+    - name: Copy Docker Compose file from host machine to remote host
+      copy:
+        src: ../docker-compose.yml
+        dest: ./
+        
+    - name: Pull the Docker images specifed in docker-compose
+      shell: 
+        cmd: docker-compose pull
+        chdir: ./
+      
+    - name: Run the pulled Docker images in detached mode
+      command: docker-compose up --build
+
+    - name: Prune unwanted images
+      command: docker image prune --force

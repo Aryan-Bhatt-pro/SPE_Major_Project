@@ -51,7 +51,7 @@ const getAllNotes = (mainNotes, filter, searchInput) => {
   }
 
   //Pinned notes
-  if (pinned.length !== 0 && normal.length === 0) {
+  else if (pinned.length !== 0 && normal.length === 0) {
     return (
       <>
         <div className="allNotes__notes-type">
@@ -67,7 +67,7 @@ const getAllNotes = (mainNotes, filter, searchInput) => {
   }
 
   // All notes (pin and normal)
-  if (pinned.length !== 0 && normal.length !== 0) {
+  else if (pinned.length !== 0 && normal.length !== 0) {
     return (
       <>
         <div>
@@ -85,7 +85,7 @@ const getAllNotes = (mainNotes, filter, searchInput) => {
             All Notes <span>({normal.length})</span>
           </div>
           <NotesContainer>
-            {filteredNotes(normal, filter)?.map((note) => (
+            {(mainNotes.slice(2)).map((note) => (
               <NoteCard key={note.id} note={note} type="notes" />
             ))}
           </NotesContainer>

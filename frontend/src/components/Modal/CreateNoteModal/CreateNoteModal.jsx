@@ -31,6 +31,7 @@ import {
 //components
 import TextEditor from "../../TextEditor/TextEditor";
 import TagsModal from "../TagsModal/TagsModal";
+import { BsCartCheck } from "react-icons/bs";
 
 const CreateNoteModal = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const CreateNoteModal = () => {
   const [noteTitle, setNoteTitle] = useState(editNote?.title || "");
   const [value, setValue] = useState(editNote?.content || "");
   const [addedTags, setAddedTags] = useState(editNote?.tags || []);
-  const [noteColor, setNoteColor] = useState(editNote?.color || "");
+  const [noteColor, setNoteColor] = useState(editNote?.color || "white");
   const [priority, setPriority] = useState(editNote?.priority || "low");
 
   //deleting tag from added tags when the tag is deleted from the main tags list
@@ -63,69 +64,122 @@ const CreateNoteModal = () => {
     }
   };
 
+  function generateUniqueId() {
+    return Math.floor(Date.now() * Math.random());
+  }
+
   // create note
-  const createNoteHandler = async(e) => {
+  const createNoteHandler = async (e) => {
     if (!noteTitle) {
       toast.error("You must add title");
       return;
-    } else if (value === "<p><br></p>") {
+    } else if (value === "<br>") {
       toast.error("You must write note");
       return;
     }
 
     const date = dayjs().format("DD/MM/YY h:mm A");
-    let new_value = value.slice(3, value.length - 4);
-    console.log(editNote)
+    let value_final = value.slice(3, value.length - 4)
+
     let note = {
       title: noteTitle,
-      content: new_value,
+      content: value_final,
       // tags: addedTags,
       color: noteColor,
       priority: priority,
       // editedTime: new Date().getTime(),
     };
-      
+
     
-      
+    // let notes_list = [];
 
     if (editNote) {
       note = { ...editNote, ...note };
-      // const customConfig = {
-      //   headers: {
-      //   'Content-Type': 'application/json'
+      // try {
+      //   let noteid = note.id;
+      //   var note_to_send = {
+      //     id: note.id,
+      //     title: note.title,
+      //     content: note.content,
+      //     color: note.color,
+      //     priority: note.priority
       //   }
+      //   const response = await axios.put(
+      //     "http://localhost:8085/api/updatenote/" + noteid,
+      //     note_to_send,
+      //     {
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //         // Add other headers as needed
+      //       },
+      //     }
+      //   );
+      //   console.log(response.data);
+      // } catch (error) {
+      //   console.error("Error making PUT req", error);
       // }
-      // const response = await axios.put('http://127.0.0.1:8085/api/updatenote', note);
-      // console.log('Update: ' + response.data);
 
-    } else {
-      let demo_note = {
-        ...note, 
-        id: v4()
+      try {
+        const response = await axios.put(
+          "http://localhost:8085/api/updatenote/" + note.id,
+          note,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              // Add other headers as needed
+            },
+          }
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error making PUT req", error);
+      }
+
+
+    }
+    // first time note is created 
+    else {
+      try {
+        note = {
+          ...note,
+          id: generateUniqueId(),
+          isPinned: false
+        }
+        const response = await axios.post(
+          "http://localhost:8085/api/addnote",
+          note,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              // Add other headers as needed
+            },
+          }
+        );
+        // notes_list = await axios.get("http://localhost:8085/api/getnotes").data;
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error making POST req", error);
       }
       note = {
-        ...demo_note,
+        ...note,
         date,
         createdTime: new Date().getTime(),
         editedTime: null,
         isPinned: false,
         isRead: false,
-        
       };
-      try {
-        const customConfig = {
-          headers: {
-          'Content-Type': 'application/json'
-          }
-        }
-        const response = await axios.post('http://127.0.0.1:8085/api/addnote', demo_note, customConfig);
-        console.log(response.data);
-      } catch (error) {
-        console.error('Error making POST req', error);
-      }
+      console.log("ID" + note.id);
     }
-
-    dispatch(setMainNotes(note));
+    let notes_list = []
+    try{
+      const resp = await axios.get("http://localhost:8085/api/getnotes");
+      notes_list = resp.data;
+      console.log('hello' + JSON.stringify(notes_list));
+      dispatch(setMainNotes(notes_list));
+    }catch (error) {
+      console.error("Error making GET req", error);
+    }
+    
     dispatch(toggleCreateNoteModal(false));
     dispatch(setEditNote(null));
   };

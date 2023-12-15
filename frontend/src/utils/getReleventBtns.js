@@ -3,7 +3,7 @@ import { NotesIconBox } from "../styles/styles";
 //icons
 import { FaTrash, FaArchive, FaTrashRestore, FaEdit } from "react-icons/fa";
 import { RiInboxUnarchiveFill } from "react-icons/ri";
-
+import axios from "axios";
 //redux
 import {
   setArchiveNotes,
@@ -60,16 +60,25 @@ const getReleventBtns = (type, note, dispatch) => {
     return (
       <>
         <NotesIconBox data-info="Edit">
-          <FaEdit style={{ fontSize: "1rem" }} onClick={clickHandler} />
+          <FaEdit style={{ fontSize: "1.5rem" }} onClick={clickHandler} />
         </NotesIconBox>
-        <NotesIconBox
+        {/* <NotesIconBox
           onClick={() => dispatch(setArchiveNotes(note))}
           data-info="Archive"
         >
           <FaArchive />
-        </NotesIconBox>
+        </NotesIconBox> */}
         <NotesIconBox
-          onClick={() => dispatch(setTrashNotes(note))}
+          onClick={async () => 
+            {try{
+              const response = await axios.delete('http://localhost:8085/api/deletenote/' + String(note.id));
+            }catch(err){
+              console.log(note)
+              console.error('Error deleting note:', err.message);
+            }
+            dispatch(setTrashNotes(note))
+          }
+            }
           data-info="Delete"
         >
           <FaTrash />

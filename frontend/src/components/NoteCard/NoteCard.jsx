@@ -20,8 +20,16 @@ import { getReleventBtns } from "../../utils";
 import ReadNoteModal from "../Modal/ReadNoteModal/ReadNoteModal";
 
 const NoteCard = ({ note, type }) => {
-  const { title, content, tags, color, priority, date, isPinned, isRead, id } =
-    note;
+  // const { id, title, content, color, priority } =
+    // note;
+    const id = note.id;
+    const title = note.title;
+    console.log('Title' + title);
+    const content = note.content;
+    const color = note.color;
+    const priority = note.priority;
+    const isRead = note.isRead;
+    const isPinned = note.isPinned;
 
   const dispatch = useDispatch();
 
@@ -68,14 +76,14 @@ const NoteCard = ({ note, type }) => {
           {parse(func())}
         </ContentBox>
 
-        <TagsBox>
+        {/* <TagsBox>
           {tags?.map(({ tag, id }) => (
             <span key={id}>{tag}</span>
           ))}
-        </TagsBox>
+        </TagsBox> */}
 
         <FooterBox>
-          <div className="noteCard__date">{date}</div>
+          {/* <div className="noteCard__date">{date}</div> */}
           <div>{getReleventBtns(type, note, dispatch)}</div>
         </FooterBox>
       </Card>
