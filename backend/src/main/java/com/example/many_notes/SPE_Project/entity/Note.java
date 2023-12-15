@@ -1,11 +1,9 @@
 package com.example.many_notes.SPE_Project.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -18,6 +16,9 @@ public class Note {
     @Id
     @GeneratedValue
     private int id;
+    @Getter
+    @ManyToOne
+    private User user;
 
     private String title;
     private String content;
