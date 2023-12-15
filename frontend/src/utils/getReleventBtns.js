@@ -2,6 +2,7 @@ import { NotesIconBox } from "../styles/styles";
 
 //icons
 import { FaTrash, FaArchive, FaTrashRestore, FaEdit } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { RiInboxUnarchiveFill } from "react-icons/ri";
 import axios from "axios";
 //redux
@@ -15,7 +16,9 @@ import {
   toggleCreateNoteModal,
 } from "../features";
 
-const getReleventBtns = (type, note, dispatch) => {
+
+const getReleventBtns = (type, note, dispatch, authToken) => {
+  // const dispatch = useDispatch();
   const clickHandler = () => {
     // here we edit the note trigger
     dispatch(setEditNote(note));
@@ -71,7 +74,11 @@ const getReleventBtns = (type, note, dispatch) => {
         <NotesIconBox
           onClick={async () => 
             {try{
-              const response = await axios.delete('http://localhost:8085/api/deletenote/' + String(note.id));
+              const response = await axios.delete('http://localhost:8085/api/deletenote/' + String(note.id), {
+                headers: {
+                  'Authorization': `Bearer ${authToken}`
+                } 
+              });
             }catch(err){
               console.log(note)
               console.error('Error deleting note:', err.message);

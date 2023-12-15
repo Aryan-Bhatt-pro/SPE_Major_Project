@@ -35,7 +35,7 @@ import { BsCartCheck } from "react-icons/bs";
 
 const CreateNoteModal = () => {
   const dispatch = useDispatch();
-
+  const authToken = useSelector((state) => state.auth.token);
   const { viewAddTagsModal } = useSelector((state) => state.modal);
   const { tagsList } = useSelector((state) => state.tags);
   const { editNote } = useSelector((state) => state.notesList);
@@ -126,6 +126,7 @@ const CreateNoteModal = () => {
           {
             headers: {
               "Content-Type": "application/json",
+              'Authorization': `Bearer ${authToken}`
               // Add other headers as needed
             },
           }
@@ -150,9 +151,8 @@ const CreateNoteModal = () => {
           note,
           {
             headers: {
-              "Content-Type": "application/json",
-              // Add other headers as needed
-            },
+              'Authorization': `Bearer ${authToken}`
+            } 
           }
         );
         // notes_list = await axios.get("http://localhost:8085/api/getnotes").data;
@@ -172,7 +172,11 @@ const CreateNoteModal = () => {
     }
     let notes_list = []
     try{
-      const resp = await axios.get("http://localhost:8085/api/getnotes");
+      const resp = await axios.get("http://localhost:8085/api/getnotes", {
+        headers: {
+          'Authorization': `Bearer ${authToken}`
+        } 
+      });
       notes_list = resp.data;
       console.log('hello' + JSON.stringify(notes_list));
       dispatch(setMainNotes(notes_list));

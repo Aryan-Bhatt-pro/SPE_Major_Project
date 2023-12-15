@@ -14,7 +14,7 @@ import {
 import { NotesIconBox } from "../../styles/styles";
 
 //redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setPinnedNotes, readNote } from "../../features";
 import { getReleventBtns } from "../../utils";
 import ReadNoteModal from "../Modal/ReadNoteModal/ReadNoteModal";
@@ -32,6 +32,7 @@ const NoteCard = ({ note, type }) => {
     const isPinned = note.isPinned;
 
   const dispatch = useDispatch();
+  const authToken = useSelector((state) => state.auth.token);
 
   // const parsedContent =
   //
@@ -84,7 +85,7 @@ const NoteCard = ({ note, type }) => {
 
         <FooterBox>
           {/* <div className="noteCard__date">{date}</div> */}
-          <div>{getReleventBtns(type, note, dispatch)}</div>
+          <div>{getReleventBtns(type, note, dispatch, authToken)}</div>
         </FooterBox>
       </Card>
     </>
